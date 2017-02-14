@@ -76,7 +76,7 @@ object TwitterReader {
     //build basic client
     val client = new ClientBuilder()
       .name(config.getString(TwitterSourceConfig.TWITTER_APP_NAME))
-      .hosts(Constants.STREAM_HOST)
+      .hosts(config.getString(TwitterSourceConfig.STREAM_HOST))
       .endpoint(endpoint)
       .authentication(auth)
       .processor(new StringDelimitedProcessor(queue))

@@ -2,6 +2,7 @@ package com.eneco.trading.kafka.connect.twitter
 
 import java.util
 
+import com.twitter.hbc.core.Constants
 import org.apache.kafka.common.config.{AbstractConfig, ConfigDef}
 import org.apache.kafka.common.config.ConfigDef.{Type, Importance}
 import scala.collection.JavaConversions._
@@ -20,6 +21,9 @@ object TwitterSourceConfig {
   val TOKEN_CONFIG_DOC = "Twitter account token."
   val SECRET_CONFIG = "twitter.secret"
   val SECRET_CONFIG_DOC = "Twitter account secret."
+  val STREAM_HOST = "stream.host"
+  val STREAM_HOST_DEFAULT = Constants.STREAM_HOST
+  val STREAM_HOST_DOC = "Twitter streaming api host."
   val STREAM_TYPE = "stream.type"
   val STREAM_TYPE_DOC = "Twitter stream type (filter or sample)."
   val STREAM_TYPE_FILTER = "filter"
@@ -57,6 +61,7 @@ object TwitterSourceConfig {
     .define(CONSUMER_SECRET_CONFIG, Type.PASSWORD, Importance.HIGH, CONSUMER_SECRET_CONFIG_DOC)
     .define(TOKEN_CONFIG, Type.STRING, Importance.HIGH, TOKEN_CONFIG_DOC)
     .define(SECRET_CONFIG, Type.PASSWORD, Importance.HIGH, SECRET_CONFIG_DOC)
+    .define(STREAM_HOST, Type.STRING, STREAM_HOST_DEFAULT, Importance.HIGH, STREAM_HOST_DOC)
     .define(STREAM_TYPE, Type.STRING, STREAM_TYPE_DEFAULT, Importance.HIGH, STREAM_TYPE_DOC)
     .define(TRACK_TERMS, Type.LIST, EMPTY_VALUE, Importance.MEDIUM, TRACK_TERMS_DOC)
     .define(TRACK_FOLLOW, Type.LIST, EMPTY_VALUE, Importance.MEDIUM, TRACK_FOLLOW_DOC)
